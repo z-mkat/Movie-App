@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage Title="Movie by Actor" BackgroundColor="#4f5654"
+	xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:NetflixRouletteApp" x:Class="NetflixRouletteApp.NetflixRouletteAppPage" >
+	<StackLayout>
+		<SearchBar TextChanged="OnTextChanged" Placeholder="Search for movies by actor.." />
+		<ActivityIndicator Color="White" IsRunning="{Binding IsSearching}"/>
+		<Frame x:Name="notFound"  HasShadow="true" IsVisible="false">
+			<Label Text="No movies found matching your search."/>
+		</Frame>
+		<ListView x:Name="listView" ItemSelected="OnMovieSelected" IsVisible="false">
+			<ListView.ItemTemplate>
+				<DataTemplate>
+					<ImageCell 
+						ImageSource="{Binding Poster}" 
+						Text="{Binding Title}" Detail="{Binding ReleaseYear}"/>
+				</DataTemplate>
+			</ListView.ItemTemplate>
+		</ListView>
+	</StackLayout>
+</ContentPage>
